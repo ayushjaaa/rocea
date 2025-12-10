@@ -1,0 +1,241 @@
+/* =============================================
+   1. FONT IMPORT (Must be first)
+============================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* =============================================
+   2. TAILWIND IMPORT
+============================================= */
+@import "tailwindcss";
+
+/* =============================================
+   3. THEME TOKENS
+============================================= */
+@theme {
+  /* Color Palette */
+  --color-background: #F2F1EA;
+  --color-surface: #FFFFFF;
+  --color-border: #FFFFFF;
+  --color-beige: #DCD1BF;
+  --color-gold: #D9B57D;
+  --color-deep-red: #5F0000;
+  --color-dark-gray: #333333;
+  --color-almost-black: #171717;
+  --color-card-stone: #847E75;
+  --color-card-beige: #DCD1BF;
+  --color-card-red: #710303;
+  --color-card-red-secondary: #8E3838;
+  --color-text-light: #FFFFFF;
+  --color-text-muted: #AAAAAA;
+
+  /* Typography - Font Families */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Typography - Font Sizes */
+  --font-size-display: 48px;
+  --font-size-h1: 36px;
+  --font-size-h2: 28px;
+  --font-size-h3: 20px;
+  --font-size-body: 16px;
+  --font-size-small: 14px;
+
+  /* Line Heights */
+  --line-height-heading: 1.1;
+  --line-height-body: 1.4;
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-1: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-2: 0 4px 10px rgba(0, 0, 0, 0.10);
+  --shadow-3: 0 8px 20px rgba(0, 0, 0, 0.12);
+
+  /* Spacing Scale */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+
+  /* Animation Durations */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+}
+
+/* =============================================
+   4. GLOBAL STYLES
+============================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-almost-black);
+  background-color: var(--color-background);
+  min-height: 100%;
+}
+
+/* =============================================
+   5. UTILITY CLASSES
+============================================= */
+
+/* Headings */
+.heading-display {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  line-height: var(--line-height-heading);
+  font-weight: 600;
+}
+
+.heading-h1 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-heading);
+  font-weight: 600;
+}
+
+.heading-h2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h2);
+  line-height: var(--line-height-heading);
+  font-weight: 500;
+}
+
+.heading-h3 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-h3);
+  line-height: var(--line-height-heading);
+  font-weight: 500;
+}
+
+/* Text */
+.text-body {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+}
+
+.text-small {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-body);
+}
+
+/* Focus Ring */
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--color-deep-red);
+  color: var(--color-text-light);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: all var(--duration-normal) ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-card-red);
+  box-shadow: var(--shadow-2);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-deep-red);
+  padding: var(--spacing-3) var(--spacing-6);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  transition: all var(--duration-normal) ease;
+  cursor: pointer;
+  border: 2px solid var(--color-deep-red);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-deep-red);
+  color: var(--color-text-light);
+}
+
+/* Card Shadows */
+.card-shadow {
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--duration-normal) ease;
+}
+
+.card-shadow:hover {
+  box-shadow: var(--shadow-2);
+}
+
+/* Container */
+.container-luxury {
+  width: 100%;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-4);
+  padding-right: var(--spacing-4);
+}
+
+@media (min-width: 768px) {
+  .container-luxury {
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-luxury {
+    padding-left: var(--spacing-8);
+    padding-right: var(--spacing-8);
+  }
+}
+
+/* Image Overlay */
+.overlay-gradient {
+  background: linear-gradient(
+    to bottom,
+    rgba(23, 23, 23, 0) 0%,
+    rgba(23, 23, 23, 0.7) 100%
+  );
+}
+
+/* Gold Accent */
+.gold-accent::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--color-gold);
+  margin-top: var(--spacing-4);
+}
+
+/* Modal Backdrop */
+.modal-backdrop {
+  background-color: rgba(23, 23, 23, 0.8);
+  backdrop-filter: blur(4px);
+}

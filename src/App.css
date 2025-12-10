@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+.tab-button:hover {
+    background-color: #A5A19A;
+}
+
+.tab-bar-wrapper {
+    width: 400px;
+    margin-left: 116px;
+}
+

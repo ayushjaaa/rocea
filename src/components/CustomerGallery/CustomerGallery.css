@@ -1,0 +1,478 @@
+/* =============================================
+   CustomerGallery Component Styles
+
+   Layout: Editorial gallery with 5 images
+   - Outer small (8%) | Inner medium (16%) | Hero center (36%) | Inner medium (16%) | Outer small (8%)
+   - Gutter spacing: 3.5-6% of container
+============================================= */
+
+/* CSS Custom Properties for Gallery */
+.customer-gallery {
+ 
+
+  --gallery-text: #262422;
+  --gallery-accent: #D9B57D;
+  --gallery-gutter: clamp(16px, 2vw, 48px);
+  /* --gallery-padding-x: 2%; */
+  --gallery-padding-y: clamp(60px, 8vh, 100px);
+
+  /* Image width ratios */
+  --width-small: 8%;
+  --width-medium: 16%;
+  --width-hero: 36%;
+
+  /* Section gap - controls spacing between top, gallery, bottom */
+  --section-gap: clamp(60px, 10vh, 120px);
+
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--gallery-bg);
+  padding: var(--gallery-padding-y) var(--gallery-padding-x);
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-gap);
+  overflow: hidden;
+  transition: background-color 0.6s ease;
+}
+
+/* Transition state - background color changes during image expansion */
+.customer-gallery--transitioning {
+  /* background-color: var(--gallery-bg-transition); */
+}
+
+/* =============================================
+   Top Row - Label & Text Side by Side
+============================================= */
+.customer-gallery__top-row {
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 43%;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* =============================================
+   Top Left Label - "Our Customers"
+============================================= */
+.customer-gallery__label {
+  flex-shrink: 0;
+}
+
+.customer-gallery__label h2 {
+  font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(14px, 1vw, 16px);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--gallery-text);
+  margin: 0;
+}
+
+/* =============================================
+   Top Right Text Block
+============================================= */
+.customer-gallery__top-text {
+  width: clamp(320px, 38%, 520px);
+  text-align: left;
+}
+
+.customer-gallery__top-text p {
+  font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(18px, 1.4vw, 26px);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--gallery-text);
+  margin: 0 0 24px 0;
+}
+
+/* Bullet Label */
+.customer-gallery__bullet {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.customer-gallery__bullet-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--gallery-accent);
+  flex-shrink: 0;
+}
+
+.customer-gallery__bullet-label {
+  font-family: var(--font-sans, 'Inter', sans-serif);
+  font-size: clamp(11px, 0.8vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gallery-text);
+}
+
+/* =============================================
+   Gallery Row - 5 Images Horizontal
+============================================= */
+.customer-gallery__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gallery-gutter);
+  width: 100%;
+}
+
+/* =============================================
+   Gallery Items
+============================================= */
+.customer-gallery__item {
+  flex-shrink: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+/* Size Variants */
+.customer-gallery__item--small {
+  width: var(--width-small);
+  aspect-ratio: 4/5;
+}
+
+.customer-gallery__item--medium {
+  width: var(--width-medium);
+  aspect-ratio: 4/5;
+}
+
+.customer-gallery__item--hero {
+  width: var(--width-hero);
+  aspect-ratio: 5/4.4;
+}
+
+/* Image Styling */
+.customer-gallery__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Hover Effects - Only on non-hero images */
+.customer-gallery__item--small:hover,
+.customer-gallery__item--medium:hover {
+  transform: scale(1.02);
+}
+
+.customer-gallery__item:focus-visible {
+  outline: 2px solid var(--gallery-accent);
+  outline-offset: 4px;
+}
+
+/* =============================================
+   Bottom Left Paragraph
+============================================= */
+.customer-gallery__bottom-text {
+  width: clamp(280px, 32%, 460px);
+}
+
+.customer-gallery__bottom-text p {
+  font-family: var(--font-display, 'Playfair Display', Georgia, serif);
+  font-size: clamp(16px, 1.2vw, 20px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--gallery-text);
+  margin: 0;
+}
+
+/* =============================================
+   RESPONSIVE BREAKPOINTS
+============================================= */
+
+/* Large Desktop (≥1280px) - Full 5-card layout */
+@media (min-width: 1280px) {
+  .customer-gallery {
+    --gallery-padding-x: 3%;
+  }
+}
+
+/* Desktop/Laptop (1024px - 1279px) */
+@media (max-width: 1279px) {
+  .customer-gallery {
+    --gallery-padding-x: 8%;
+    --width-small: 10%;
+    --width-medium: 18%;
+    --width-hero: 32%;
+  }
+}
+
+/* Tablet (768px - 1023px) - 3 cards visible */
+@media (max-width: 1023px) {
+  .customer-gallery {
+    --gallery-padding-x: 6%;
+    --section-gap: clamp(40px, 6vh, 80px);
+    min-height: auto;
+  }
+
+  .customer-gallery__top-row {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .customer-gallery__top-text {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .customer-gallery__row {
+    gap: 16px;
+  }
+
+  /* Hide outer small images on tablet */
+  .customer-gallery__item--small {
+    display: none;
+  }
+
+  .customer-gallery__item--medium {
+    width: 28%;
+  }
+
+  .customer-gallery__item--hero {
+    width: 40%;
+  }
+
+  .customer-gallery__bottom-text {
+    width: 100%;
+    max-width: 540px;
+  }
+}
+
+/* Mobile (< 768px) - Stacked/Scroll layout */
+@media (max-width: 767px) {
+  .customer-gallery {
+    --gallery-padding-x: 5%;
+    --gallery-padding-y: clamp(40px, 6vh, 60px);
+    --section-gap: clamp(28px, 4vh, 45px);
+    min-height: auto;
+  }
+
+  .customer-gallery__top-row {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .customer-gallery__label h2 {
+    font-size: 14px;
+  }
+
+  .customer-gallery__top-text {
+    width: 100%;
+  }
+
+  .customer-gallery__top-text p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .customer-gallery__row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* Show all images in vertical stack */
+  .customer-gallery__item--small {
+    display: block;
+    width: 60%;
+    order: 2;
+  }
+
+  .customer-gallery__item--medium {
+    width: 80%;
+    order: 1;
+  }
+
+  .customer-gallery__item--hero {
+    width: 100%;
+    order: 0;
+    aspect-ratio: 4/5;
+  }
+
+  /* Reorder: Hero first, then alternating sizes */
+  .customer-gallery__row .customer-gallery__item:nth-child(1) { order: 2; }
+  .customer-gallery__row .customer-gallery__item:nth-child(2) { order: 1; }
+  .customer-gallery__row .customer-gallery__item:nth-child(3) { order: 0; }
+  .customer-gallery__row .customer-gallery__item:nth-child(4) { order: 3; }
+  .customer-gallery__row .customer-gallery__item:nth-child(5) { order: 4; }
+
+  .customer-gallery__bottom-text {
+    width: 100%;
+  }
+
+  .customer-gallery__bottom-text p {
+    font-size: 16px;
+  }
+}
+
+/* Alternative Mobile: Horizontal Scroll Carousel */
+@media (max-width: 767px) {
+  .customer-gallery--carousel .customer-gallery__row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 24px 0;
+    margin: 0 calc(var(--gallery-padding-x) * -1);
+    padding-left: var(--gallery-padding-x);
+    padding-right: var(--gallery-padding-x);
+  }
+
+  .customer-gallery--carousel .customer-gallery__item {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    width: 80vw;
+    max-width: 350px;
+  }
+
+  .customer-gallery--carousel .customer-gallery__item--hero {
+    width: 85vw;
+    max-width: 360px;
+  }
+
+  /* Reset order for carousel */
+  .customer-gallery--carousel .customer-gallery__row .customer-gallery__item {
+    order: initial !important;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .customer-gallery--carousel .customer-gallery__row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .customer-gallery--carousel .customer-gallery__row {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* =============================================
+   SCROLL-TRIGGERED ANIMATIONS (GSAP)
+============================================= */
+
+/* Gallery row - positioned for GSAP animations */
+.customer-gallery__row {
+  position: relative;
+  /* Prevent background color bleeding during animation */
+  background-color: transparent;
+}
+
+/* Active image base state - GSAP controls scale/opacity */
+.customer-gallery__item--active {
+  z-index: 10;
+  transform-origin: center center;
+  will-change: transform, border-radius;
+  /* Keep overflow hidden for the image itself, but ensure it can scale large */
+  overflow: hidden;
+}
+
+/* Non-active items - GSAP controls opacity */
+.customer-gallery__row .customer-gallery__item:not(.customer-gallery__item--active) {
+  will-change: opacity;
+}
+
+/* =============================================
+   TIMELINE PROGRESS INDICATOR
+============================================= */
+.customer-gallery__timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 0;
+}
+
+.customer-gallery__timeline-item {
+  background: none;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.3s ease;
+}
+
+.customer-gallery__timeline-item:hover {
+  opacity: 0.8;
+}
+
+.customer-gallery__timeline-item:focus-visible {
+  outline: 2px solid var(--gallery-accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.customer-gallery__timeline-track {
+  display: block;
+  width: 60px;
+  height: 2px;
+  background-color: rgba(38, 36, 34, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.customer-gallery__timeline-progress {
+  display: block;
+  height: 100%;
+  background-color: var(--gallery-text, #262422);
+  border-radius: 1px;
+  transition: width 0.1s linear;
+}
+
+/* Active timeline item has thicker track */
+.customer-gallery__timeline-item--active .customer-gallery__timeline-track {
+  height: 3px;
+}
+
+/* =============================================
+   TIMELINE RESPONSIVE STYLES
+============================================= */
+@media (max-width: 1023px) {
+  .customer-gallery__timeline {
+    gap: 10px;
+  }
+
+  .customer-gallery__timeline-track {
+    width: 50px;
+  }
+}
+
+@media (max-width: 767px) {
+  .customer-gallery__timeline {
+    gap: 8px;
+    padding: 12px 0;
+  }
+
+  .customer-gallery__timeline-track {
+    width: 40px;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 479px) {
+  .customer-gallery {
+    --gallery-padding-x: 5%;
+    --gallery-padding-y: clamp(30px, 5vh, 50px);
+    --section-gap: clamp(24px, 3.5vh, 40px);
+  }
+
+  .customer-gallery__top-text p {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  .customer-gallery__row {
+    gap: 16px;
+  }
+
+  .customer-gallery__bottom-text p {
+    font-size: 15px;
+  }
+}
