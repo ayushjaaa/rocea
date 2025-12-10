@@ -1,6 +1,6 @@
 import React from 'react'
 import FurnitureShowcase from './components/FurnitureShowcase'
-import Customer from './components/customer/customer'
+
 import Rock from './components/Rock/Rock'
 import ReviewSection from './components/ReviewSection/ReviewSection'
 import CustomerGallery from "../src/components/CustomerGallery/CustomerGallery"
